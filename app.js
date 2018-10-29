@@ -11,6 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/api/todos", todoRoutes);
+app.get("/*", (req, res) => {
+  res.send("Sorry Invalid URL.");
+});
 
 app.listen(port, () => {
   console.log("listening on port", port);

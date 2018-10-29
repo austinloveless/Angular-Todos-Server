@@ -1,9 +1,9 @@
-var db = require("../models/todo");
+var Todo = require("../models/todo");
 const express = require("express");
 const router = express.Router({ mergeParams: true });
 
 router.get("/", (req, res) => {
-  db.Todo.find()
+  Todo.find()
     .then(function(todo) {
       res.json(todo);
     })
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  db.Todo.create(req.body)
+  Todo.create(req.body)
     .then(function(newTodo) {
       res.status(201).json(newTodo);
     })
@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
 });
 
 router.get("/:todoId", (req, res) => {
-  db.Todo.findById(req.params.todoId)
+  Todo.findById(req.params.todoId)
     .then(function(foundTodo) {
       res.json(foundTodo);
     })
@@ -33,7 +33,7 @@ router.get("/:todoId", (req, res) => {
 });
 
 router.put("/:todoId", (req, res) => {
-  db.Todo.findOneAndUpdate({ _id: req.params.todoId }, req.body, {
+  Todo.findOneAndUpdate({ _id: req.params.todoId }, req.body, {
     new: true
   })
     .then(function(todo) {
@@ -45,7 +45,7 @@ router.put("/:todoId", (req, res) => {
 });
 
 router.delete("/:todoId", (req, res) => {
-  db.Todo.remove({ _id: req.params.todoId })
+  Todo.remove({ _id: req.params.todoId })
     .then(function() {
       res.json({ message: "deleted" });
     })

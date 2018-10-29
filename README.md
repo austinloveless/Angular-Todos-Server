@@ -9,3 +9,7 @@ MEAN Stack Todo app
 Node/Express
 
 Mongo/Mongoose
+
+## Deployed to heroku 
+
+https://angular-todos.herokuapp.com/api/todos
